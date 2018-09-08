@@ -1,3 +1,7 @@
 .DS_Store
 /node_modules
 yarn-error.log
+/dist/vendor.bundle.js
+/dist/app.bundle.js
+/dist/css/style.css
+/views/index.ejs
