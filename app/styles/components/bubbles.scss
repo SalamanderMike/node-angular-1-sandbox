@@ -1,0 +1,10 @@
+.bubble {
+	position: relative;
+	left: 49%;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	border: 1px solid yellow;
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0, 100, 255, 0.75);
+	animation: fall 5s linear infinite;
+}
