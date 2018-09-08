@@ -1,0 +1,41 @@
+{
+	"name": "dotgame",
+	"version": "0.0.1",
+	"description": "Web game to gain points by clicking on falling dots",
+	"main": "server.js",
+	"repository": "https://github.com/SalamanderMike/dotgame",
+	"author": "Michael McClure",
+	"license": "MIT",
+	"scripts": {
+		"start": "node server.js",
+		"dev": "webpack --mode development",
+		"build": "webpack --mode production"
+	},
+	"dependencies": {
+		"angular": "^1.7.4",
+		"angular-animate": "^1.7.4",
+		"angular-route": "^1.7.4",
+		"ejs": "^2.6.1",
+		"express": "^4.16.3"
+	},
+	"devDependencies": {
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.5",
+		"babel-preset-env": "^1.7.0",
+		"css-loader": "^0.28.11",
+		"file-loader": "^1.1.11",
+		"mini-css-extract-plugin": "^0.4.2",
+		"ng-annotate-loader": "^0.6.1",
+		"node-sass": "^4.9.3",
+		"normalize.css": "^7.0.0",
+		"sass-loader": "^6.0.7",
+		"style-loader": "^0.19.1",
+		"url-loader": "^0.6.2",
+		"webpack": "^4.17.2",
+		"webpack-cli": "^3.1.0"
+	},
+	"engines": {
+		"node": "^10.10.0",
+		"yarn": "^1.9.4"
+	}
+}
