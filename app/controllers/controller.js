@@ -2,13 +2,15 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 	'ngInject';
 	var app = this;
 	var animations;
+	var gameState;
 	var bubblePerSecond = null;
-	var n = 0;
+	var secureClosureCount = 0;
+	var bubbleKey = 0;
 	$scope.generateBubbles = false;
 	$scope.stateOfGame = "Start";
 	$scope.score = "0000000";
 	$scope.speed = 10;
-	$scope.bubbles = {"1": 1};
+	$scope.bubbles = {"0": 0};
 
 	function getAnimationState() {
 		var animations = document.querySelectorAll('.bubble');
@@ -17,54 +19,64 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 
 
 	function newBubbles() {
-		n++;
-		if (n > 8) {
-			alert('End Of Game');
+		$timeout.cancel(bubblePerSecond);
+		bubbleKey++;
+		if (bubbleKey > 8) {
 			return;
 		} else {
-			var key = (n).toString();
-			$scope.bubbles[key] = n;
+			var key = (bubbleKey).toString();
+			$scope.bubbles[key] = bubbleKey;
 
 			$q.when(getAnimationState()).then(function(animations) {
 				for (var i = 0; i < animations.length; i++) {
 					animations[i].style.webkitAnimationPlayState = 'running';
-					console.log(animations[i].style.webkitAnimationPlayState);
 				};
 			})
+			// console.log("newBubbles Triggered");
 			bubblePerSecond = $timeout(newBubbles, 1000);
 		}
 	}
 
+	function pauseLoop() {
+		$timeout.cancel(bubblePerSecond);
+		if (gameState === "pause") {
+			secureClosureCount++;
+			$q.when(getAnimationState()).then(function(animations) {
+				for (var i = 0; i < animations.length; i++) {
+					animations[i].style.webkitAnimationPlayState = 'paused';
+				};
+			}, (function() {
+				if (secureClosureCount < 80) {
+					bubblePerSecond = $timeout(pauseLoop, 100)
+				} else {
+					$timeout.cancel(bubblePerSecond);
+				}
+			})());
+		} else {
+			$q.when(getAnimationState()).then(function(animations) {
+				for (var i = 0; i < animations.length; i++) {
+					animations[i].style.webkitAnimationPlayState = 'running';
+				};
+			}, newBubbles());
+		}
+	}
 
 
-	$scope.toggleAnimation = function(gameState) {
+	$scope.toggleAnimation = function(state) {
+		secureClosureCount = 0;
+		gameState = state;
 		var style;
 
 		if (gameState === "new") {
 			$scope.generateBubbles = true;
 			$scope.stateOfGame = "Pause";
-			$timeout.cancel(bubblePerSecond);
 			newBubbles();
 		} else if (gameState === "pause") {
 			$scope.stateOfGame = "Resume";
-			$timeout.cancel(bubblePerSecond);
-			bubblePerSecond = null;
-			$q.when(getAnimationState()).then(function(animations) {
-				for (var i = 0; i < animations.length; i++) {
-					animations[i].style.webkitAnimationPlayState = 'paused';
-					// console.log(animations[i].style.webkitAnimationPlayState);
-				}
-			})
+			pauseLoop();
 		} else {
-			$q.when(getAnimationState()).then(function(animations) {
-				$scope.stateOfGame = "Pause";
-				$timeout.cancel(bubblePerSecond);
-				bubblePerSecond = null;
-				for (var i = 0; i < animations.length; i++) {
-					animations[i].style.webkitAnimationPlayState = 'running';
-					// console.log(animations[i].style.webkitAnimationPlayState);
-				}
-			}, newBubbles())
+			$scope.stateOfGame = "Pause";
+			pauseLoop();
 		}
 	};
 
