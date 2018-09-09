@@ -7,3 +7,14 @@
 		transform: translate(0,950px);
 	}
 }
+
+@keyframes odd {
+	from {
+		transform: translate(0,100px); 
+	}
+
+	to {
+		transform: translate(0,950px);
+	}
+}
+

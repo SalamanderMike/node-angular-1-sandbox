@@ -10,6 +10,7 @@
 
 		<link 	href="/public/css/style.css" rel="stylesheet" type="text/css"/>
 		<script src="/dist/app.bundle.js"></script>
+		<script src="/dist/vendor.bundle.js"></script>
 	</head>
 	<body ng-view>
 		<div id="background"></div>		
@@ -17,10 +18,12 @@
 		<section id="score-header">
 			<form action="#">
 				<fieldset>
-					<h1>00000000</h1>
-					<button class="styled">Start</button>
-					<label for="bubbles">Bubbles</label>
-					<input type="range" id="bubble-count" name="bubbles" min="10" max="100">
+					<h1> {{ score }} </h1>
+					<button ng-click="toggleAnimation('new')" ng-if="stateOfGame=='Start'">{{ stateOfGame }}</button>
+					<button ng-click="toggleAnimation('pause')" ng-if="stateOfGame=='Pause'">{{ stateOfGame }}</button>
+					<button ng-click="toggleAnimation('resume')" ng-if="stateOfGame=='Resume'">{{ stateOfGame }}</button>
+					<label for="speed">Speed: {{ speed }}</label>
+					<input 	type="range" id="speed" name="speed" ng-model="speed" min="10" max="100" ng-click="">
 				</fieldset>
 			</form>
 		</section>
