@@ -1,1 +1,3 @@
-<div ng-repeat="bubble in bubbles track by $index" class="bubble">{{ bubble }}</div>
+<div 	ng-repeat="bubble in bubbles track by $index" class="bubble" 
+		ng-animate-children="true" ng-model="addToScore">{{ bubble }}
+</div>

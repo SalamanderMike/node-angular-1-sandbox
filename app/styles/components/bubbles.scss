@@ -1,13 +1,6 @@
 .bubble {
-	position: relative;
-	height: 20px;
-	width: 20px;
+	position: absolute;
+	left: 50%;
 	border-radius: 50%;
-	border: 1px solid yellow;
-	-webkit-box-shadow: 0px 0px 15px 0px rgba(0, 100, 255, 0.75);
-	animation: fall 5s linear infinite;
-}
-
-.bubble:nth-child(2) {
-  animation: odd 8s linear infinite;
+	-webkit-box-shadow: 0px 0px 15px 0px #009fff;
 }
