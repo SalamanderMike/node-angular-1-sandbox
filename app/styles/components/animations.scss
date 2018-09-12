@@ -1,3 +1,8 @@
-.paused {
-	-webkit-animation-play-state: paused;
+@-webkit-keyframes fall {
+	0% {
+		-webkit-transform:translateY(0vh);
+		}
+	100% {
+		-webkit-transform:translateY(100vh);
+	}
 }

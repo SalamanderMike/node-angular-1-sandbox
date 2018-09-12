@@ -1,13 +1,12 @@
 .bubble {
 	position: absolute;
-	top: 0px;
+	top: 50px;
 	border-radius: 50%;
 	-webkit-user-select: none;
 	-webkit-box-shadow: 0px 0px 15px 0px #009fff;
-	// -webkit-animation-play-state: running;
-	// -webkit-transition: all 5s linear;
-}
+	-webkit-animation-play-state: paused;
+	-webkit-animation-name: "fall";
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
 
-// .move {
-// 	-webkit-transform: translateY(100vh);
-// }
+}
