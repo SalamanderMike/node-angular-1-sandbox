@@ -19,12 +19,15 @@
 			<form action="#">
 				<fieldset>
 					<h1> {{ score }} </h1>
-					<button ng-click="toggleAnimation('new')" 
-							ng-if="stateOfGame=='Start'">{{ stateOfGame }}</button>
-					<button ng-click="toggleAnimation('pause')" 
-							ng-if="stateOfGame=='Pause'">{{ stateOfGame }}</button>
-					<button ng-click="toggleAnimation('resume')" 
-							ng-if="stateOfGame=='Resume'">{{ stateOfGame }}</button>
+					<button ng-click="gameStateChange('Start')" ng-if="gameState=='Start'">
+						{{ gameState }}
+					</button>
+					<button ng-click="gameStateChange('Resume')" ng-if="gameState=='Pause'">
+						{{ gameState }}
+					</button>
+					<button ng-click="gameStateChange('Pause')" ng-if="gameState=='Resume'">
+						{{ gameState }}
+					</button>
 					<label for="speed">Speed: {{ speed }}</label>
 					<input 	type="range" id="speed" name="speed" ng-model="speed" min="10" max="100" ng-click="">
 				</fieldset>
