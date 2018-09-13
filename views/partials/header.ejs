@@ -12,7 +12,7 @@
 		<script src="/dist/app.bundle.js"></script>
 		<script src="/dist/vendor.bundle.js"></script>
 	</head>
-	<body ng-view>
+	<body ng-view ng-cloak>
 		<div id="background"></div>		
 		
 		<section id="score-header">
@@ -29,7 +29,8 @@
 						{{ gameState }}
 					</button>
 					<label for="speed">Speed: {{ speed }}</label>
-					<input 	type="range" id="speed" name="speed" ng-model="speed" min="10" max="100" ng-click="">
+					<input 	type="range" id="speed" name="speed" ng-model="speed" min="10" max="100" 
+							ng-mouseup="changeSpeed(speed)" ng-mousedown="hideBubbles()">
 				</fieldset>
 			</form>
 		</section>

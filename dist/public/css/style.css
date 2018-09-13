@@ -1,8 +1,8 @@
 @-webkit-keyframes fall {
   0% {
-    -webkit-transform: translateY(0vh); }
+    -webkit-transform: translateY(0px); }
   100% {
-    -webkit-transform: translateY(100vh); } }
+    -webkit-transform: translateY(1000px); } }
 
 html, body {
   background: black;
@@ -32,6 +32,7 @@ form {
   position: absolute;
   top: 50px;
   border-radius: 50%;
+  color: transparent;
   -webkit-user-select: none;
   -webkit-box-shadow: 0px 0px 15px 0px #009fff;
   -webkit-animation-play-state: paused;

@@ -23,13 +23,32 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 		targetBubble.classList.add("bubble");
 
 		$q.when(newParams(targetBubble)).then(function(param) {
-			targetBubble.style.animationDuration = param.fallSpeed +'s';
 			targetBubble.style.height = param.size +'px';
 			targetBubble.style.width = param.size +'px';
 			targetBubble.style.lineHeight = (param.size) +'px';
+			targetBubble.style.fontSize = (param.fontSize) +'px';
 			targetBubble.innerHTML = param.scorePoints;
-			targetBubble.style.animationDelay = 2 +'s';
+			targetBubble.style.animationDelay = 1 +'s';
 			targetBubble.style.left = param.posX +'%';
+		})
+	}
+
+	$scope.changeSpeed = function(speed) {
+		let ratePerInch = 1000 / speed;
+		$q.when(getAnimationState()).then(function(animations) {
+			for (let i = 0; i < animations.length; i++) {
+				let offset3D = Math.random() * (1 - .2) + .2;
+				animations[i].style.animationDuration = ratePerInch + offset3D +'s';
+				animations[i].style.opacity = 1;
+			};
+		})
+	}
+
+	$scope.hideBubbles = function() {
+		$q.when(getAnimationState()).then(function(animations) {
+			for (let i = 0; i < animations.length; i++) {
+				animations[i].style.opacity = 0;
+			};
 		})
 	}
 
@@ -38,6 +57,7 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 			case 'Pause':
 				$q.when(getAnimationState()).then(function(animations) {
 					for (let i = 0; i < animations.length; i++) {
+						animations[i].style.pointerEvents = 'auto';
 						animations[i].style.webkitAnimationPlayState = 'running';
 					};
 				})
@@ -45,6 +65,7 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 			case 'Resume':
 				$q.when(getAnimationState()).then(function(animations) {
 					for (let i = 0; i < animations.length; i++) {
+						animations[i].style.pointerEvents = 'none';
 						animations[i].style.webkitAnimationPlayState = 'paused';
 					};
 				})
@@ -53,7 +74,7 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 				// START
 				$q.when(getAnimationState()).then(function(animations) {
 					for (let i = 0; i < animations.length; i++) {
-						animations[i].style.animationDuration = newParams().fallSpeed +'s';
+						animations[i].style.animationDuration = (1000 / $scope.speed) + newParams().offset3D +'s';
 						animations[i].style.webkitAnimationPlayState = 'running';			
 						animations[i].style.animationDelay = i +'s';
 					};
@@ -62,24 +83,27 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 		}
 	}
 
+	// viewportAdj adjusts for window size, but is only static
+	// offset3D augments for a slight 3D effect to make visuals more interesting
 	function newParams(targetBubble) {
 		if (targetBubble) {
+			let viewportAdj = (window.innerWidth / 70) + 67;
+			let size = Math.floor(Math.random() * (100 - 10)) + 10;
+			let posX = Math.floor(Math.random() * (viewportAdj - 1)) + 1;
+			let score = 11 - Math.floor(size / 10);
+			let fontPx = size * .85;
 			return {
-				newFallSpeed: parseFloat(window.getComputedStyle(targetBubble).animationDuration) - 0.2,
-				size: parseInt(window.getComputedStyle(targetBubble).width,10) *0.99,
-				scorePoints: parseInt(targetBubble.innerHTML,10) +10,
-				posX: Math.floor(Math.random() * (80 - 1)) + 1
+				scorePoints: score,
+				fontSize: fontPx,
+				size: size,
+				posX: posX
 			}
 		} else {
 			return {
-				fallSpeed: Math.random() * (7 - 4.5) + 4.5
+				offset3D: Math.random() * (1 - .2) + .2
 			}
 		}
 	}
-
-
-
-
 
 
 

@@ -2,11 +2,11 @@
 	position: absolute;
 	top: 50px;
 	border-radius: 50%;
+	color: transparent;
 	-webkit-user-select: none;
 	-webkit-box-shadow: 0px 0px 15px 0px #009fff;
 	-webkit-animation-play-state: paused;
 	-webkit-animation-name: "fall";
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
-
 }
