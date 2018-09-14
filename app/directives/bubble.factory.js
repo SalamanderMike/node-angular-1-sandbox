@@ -5,7 +5,7 @@ export default function bubbleFactory() {
 		template: function(element, attrs){
 			var htmlText;
 			var viewport = window.innerWidth;
-			for (let i = 0; i < 29; i++) {
+			for (let i = 0; i < 90; i++) {
 				let viewportAdj = (viewport / 70) + 67;
 				let id = i.toString();
 				let size = Math.floor(Math.random() * (100 - 10)) + 10;

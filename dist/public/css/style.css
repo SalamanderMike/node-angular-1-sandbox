@@ -15,18 +15,33 @@ html, body {
   text-align: center;
   cursor: pointer; }
 
-form {
-  background: #818aff;
+#score-header form {
+  background: -webkit-linear-gradient(45deg, #cedbe9 0%, #aac5de 17%, #3a84c3 36%, #3a84c3 36%, #6199c7 44%, #419ad6 59%, #4bb8f0 71%, #3a8bc2 84%, #26558b 100%);
   position: fixed;
-  left: 1%;
-  right: 1%;
-  width: 98%;
+  width: 100%;
   height: 150px;
   margin: 0 auto;
-  border: 1px solid grey;
-  -webkit-box-shadow: 4px 4px 5px 0px rgba(50, 50, 50, 0.75);
+  -webkit-box-shadow: inset -4px -4px 3px 0px #3e3e3e;
   padding: 1% 5%;
   z-index: 1; }
+  #score-header form h1 {
+    position: absolute;
+    right: 2%;
+    top: 1%;
+    width: 50px;
+    height: 50px;
+    lext-align: right; }
+  #score-header form button {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    width: 200px;
+    height: 100px; }
+  #score-header form label {
+    position: relative;
+    bottom: 10px;
+    width: 98%;
+    margin-top: 90px; }
 
 .bubble {
   position: absolute;
@@ -34,7 +49,7 @@ form {
   border-radius: 50%;
   color: transparent;
   -webkit-user-select: none;
-  -webkit-box-shadow: 0px 0px 15px 0px #009fff;
+  -webkit-box-shadow: inset -8px 0px 30px 0px blue;
   -webkit-animation-play-state: paused;
   -webkit-animation-name: "fall";
   -webkit-animation-timing-function: linear;
