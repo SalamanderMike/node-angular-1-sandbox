@@ -1,6 +1,6 @@
 {
 	"name": "dotgame",
-	"version": "0.0.1",
+	"version": "0.8.0",
 	"description": "Web game to gain points by clicking on falling dots",
 	"main": "server.js",
 	"repository": "https://github.com/SalamanderMike/dotgame",

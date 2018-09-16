@@ -25,14 +25,13 @@ function ejsIncludePath(indexPath, information) {
 			return true;
 		});
 	})
-}
+};
 ejsIncludePath(__dirname + '/views/includes/index.ejs');
 
 // Setup
 app.set('view engine', 'ejs');
 app.use('/public', express.static(path.join(__dirname, '/dist/public')));
 app.use('/dist', express.static(path.join(__dirname, '/dist')));
-
 
 // ROUTES
 app.get('/*', function (req, res) {
