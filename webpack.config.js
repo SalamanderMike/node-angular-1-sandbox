@@ -6,11 +6,16 @@ module.exports = {
 	mode: 'production',
 	entry: {
 		app: './app/app.js',
-		vendor: 'angular',
+		vendor: [
+			'angular',
+			'angular-animate',
+			'angular-route'
+		]
 	},
 	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: '[name].bundle.js'
+		path: path.resolve('public'),
+		filename: '[name].bundle.js',
+		publicPath: '/public'
 	},
 	resolve: {
 		modules: [
@@ -61,7 +66,7 @@ module.exports = {
 				{ 	loader: 'url-loader',
 					options: {
 						limit: 2000,
-						outputPath: '/public/images/',
+						outputPath: '/images/',
 						name: '[name].[ext]'
 					}
 				}]
@@ -70,7 +75,7 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: '/public/css/style.css'
+			filename: '/css/style.css'
 		}),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': '"production"'

@@ -19,7 +19,7 @@ export default function AppController($scope, $timeout, $q) {
 	};
 
 	$scope.popBubble = function(element) {
-		let pop = new Audio('/public/audio/pop.wav');
+		let pop = new Audio('public/audio/pop.wav');
 		pop.play();
 
 		var targetBubble = document.getElementById(element.getAttribute('id'));
