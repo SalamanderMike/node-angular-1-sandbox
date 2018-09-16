@@ -1,8 +1,8 @@
 @-webkit-keyframes fall {
   0% {
-    -webkit-transform: translateY(0px); }
+    -webkit-transform: translateY(0px) rotate(0deg); }
   100% {
-    -webkit-transform: translateY(1000px); } }
+    -webkit-transform: translateY(1000px) rotate(-15deg); } }
 
 html, body {
   background: black;
@@ -11,15 +11,13 @@ html, body {
   margin: 0px;
   padding: 0px;
   overflow: hidden;
-  color: grey;
-  text-align: center;
-  cursor: pointer; }
+  color: grey; }
 
 #score-header form {
   background: -webkit-linear-gradient(45deg, #cedbe9 0%, #aac5de 17%, #3a84c3 36%, #3a84c3 36%, #6199c7 44%, #419ad6 59%, #4bb8f0 71%, #3a8bc2 84%, #26558b 100%);
   position: fixed;
   width: 100%;
-  height: 150px;
+  height: 200px;
   margin: 0 auto;
   -webkit-box-shadow: inset -4px -4px 3px 0px #3e3e3e;
   padding: 1% 5%;
@@ -30,28 +28,67 @@ html, body {
     top: 1%;
     width: 50px;
     height: 50px;
-    lext-align: right; }
+    color: red;
+    text-align: right; }
   #score-header form button {
     position: absolute;
     left: 2%;
     top: 2%;
-    width: 200px;
-    height: 100px; }
+    width: 230px;
+    height: 187px;
+    font-size: 4em;
+    cursor: pointer; }
   #score-header form label {
-    position: relative;
+    position: absolute;
+    top: 110px;
     bottom: 10px;
-    width: 98%;
-    margin-top: 90px; }
+    right: 30px;
+    left: 280px;
+    color: red;
+    text-align: right; }
+    #score-header form label input[type=range] {
+      -webkit-appearance: none;
+      margin: 18px 0;
+      width: 100%; }
+    #score-header form label input[type=range]:focus {
+      outline: none; }
+    #score-header form label input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      animate: 0.2s;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      background: #3071a9;
+      border-radius: 1.3px;
+      border: 0.2px solid #010101; }
+    #score-header form label input[type=range]::-webkit-slider-thumb {
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      border: 1px solid #000000;
+      height: 36px;
+      width: 16px;
+      border-radius: 3px;
+      background: #ffffff;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -14px; }
+    #score-header form label input[type=range]:focus::-webkit-slider-runnable-track {
+      background: #367ebd; }
 
-.bubble {
+#game-window bubble-factory .bubble {
   position: absolute;
-  top: 50px;
+  top: 40px;
   border-radius: 50%;
   color: transparent;
+  cursor: pointer;
   -webkit-user-select: none;
-  -webkit-box-shadow: inset -8px 0px 30px 0px blue;
-  -webkit-animation-play-state: paused;
   -webkit-animation-name: "fall";
+  -webkit-animation-play-state: paused;
   -webkit-animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite; }
+  #game-window bubble-factory .bubble img {
+    object-fit: contain;
+    width: 100%; }
+
+#bubbleImage {
+  background: url(/public/images/bubble.png); }
 

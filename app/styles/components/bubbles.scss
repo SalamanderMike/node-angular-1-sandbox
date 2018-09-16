@@ -1,12 +1,26 @@
-.bubble {
-	position: absolute;
-	top: 50px;
-	border-radius: 50%;
-	color: transparent;
-	-webkit-user-select: none;
-	-webkit-box-shadow: inset -8px 0px 30px 0px blue;
-	-webkit-animation-play-state: paused;
-	-webkit-animation-name: "fall";
-	-webkit-animation-timing-function: linear;
-	-webkit-animation-iteration-count: infinite;
+#game-window {
+	bubble-factory {
+		.bubble {
+			position: absolute;
+			top: 40px;
+			border-radius: 50%;
+			color: transparent;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-webkit-animation-name: "fall";
+			-webkit-animation-play-state: paused;
+			-webkit-animation-timing-function: linear;
+			-webkit-animation-iteration-count: infinite;
+
+			img {
+				object-fit: contain; 
+				width: 100%;
+			}
+		}		
+	}
 }
+
+#bubbleImage {
+	background: url(./img/bubble.png);
+}
+

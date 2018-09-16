@@ -20,7 +20,9 @@ export default function bubbleFactory() {
 								+'line-height:'+size+'px;'
 								+'font-size:'+fontPx+'px;'
 								+'" '
-								+'data-ng-click="popBubble($event)">'+score
+								+'data-score="'+score+'" '
+								+'data-ng-mousedown="popBubble($event.currentTarget)">'
+								+'<img src="/public/images/bubble.png">'
 								+'</div>' 
 								+ htmlText;
 			}

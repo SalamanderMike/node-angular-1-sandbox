@@ -1,13 +1,12 @@
-export default function AppController ($scope, $animateCss, $timeout, $q) {
+export default function AppController($scope, $timeout, $q) {
 	'ngInject';
 	const app = this;
-	const rainbow = ['yellow','blue','cyan','pink','red','green','purple'];
 	$scope.gameState = "Start";
 	$scope.score = 0;
 	$scope.speed = 100;
 
 	// dynamicBubbleNum = Fewer bubbles on smaller screens to prevent clutter
-	var dynamicBubbleNum = 15 - Math.floor((window.innerWidth) / 128);
+	var dynamicBubbleNum = 32 - Math.floor((window.innerWidth) / 60);
 
 	$scope.gameStateChange = function(gameState) {
 		 if (gameState === 'Start') {
@@ -20,18 +19,19 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 	};
 
 	$scope.popBubble = function(element) {
-		var targetBubble = document.getElementById(element.target.id);
-		$scope.score += parseInt(element.target.innerHTML,10);
-		targetBubble.classList.remove("bubble");
-		void targetBubble.offsetWidth;
-		targetBubble.classList.add("bubble");
+		let pop = new Audio('/public/audio/pop.wav');
+		pop.play();
+
+		var targetBubble = document.getElementById(element.getAttribute('id'));
+		$scope.score += parseInt(targetBubble.getAttribute('data-score'),10);
+		resetAnimation(targetBubble);
 
 		$q.when(newParams(targetBubble)).then(function(param) {
+			targetBubble.setAttribute('data-score', param.scorePoints);
+			targetBubble.style.fontSize = param.fontSize +'px';
+			targetBubble.style.lineHeight = param.size +'px';
 			targetBubble.style.height = param.size +'px';
 			targetBubble.style.width = param.size +'px';
-			targetBubble.style.lineHeight = (param.size) +'px';
-			targetBubble.style.fontSize = (param.fontSize) +'px';
-			targetBubble.innerHTML = param.scorePoints;
 			targetBubble.style.animationDelay = 1 +'s';
 			targetBubble.style.left = param.posX +'%';
 		})
@@ -42,8 +42,11 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 			for (let i = 0; i < animations.length - dynamicBubbleNum; i++) {
 				let inverse = 100 - ($scope.speed / 10);
 				animations[i].style.animationDuration = (1000 / $scope.speed) + newParams().offset3D +'s';
-				animations[i].style.webkitAnimationPlayState = 'running';
 				animations[i].style.opacity = 1;
+
+				if ($scope.gameState === 'Pause') {
+					animations[i].style.webkitAnimationPlayState = 'running';
+				}
 			};
 		})
 	};
@@ -76,20 +79,14 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 				})
 				break;
 			default:
-				// START
+				//START
 				$q.when(getAnimationState()).then(function(animations) {
 					for (let i = 0; i < animations.length - dynamicBubbleNum; i++) {
-						let color = Math.floor(Math.random() * (6 - 0)) + 0;
-						let angleY = Math.floor(Math.random() * (10 - 0)) + 0;
-						let angleX = Math.floor(Math.random() * (10 - 0)) - 10;
-						let flare = Math.floor(Math.random() * (30 - 10)) + 10;
-						animations[i].style.boxShadow = ' inset '+angleX+'px '+angleY+'px 30px 0px '+rainbow[color];
 						animations[i].style.animationDuration = (1000 / $scope.speed) + newParams().offset3D +'s';
 						animations[i].style.webkitAnimationPlayState = 'running';
 						animations[i].style.animationDelay = i +'s';
-					};
-				}
-			)
+					}
+				})
 		}
 	};
 
@@ -148,10 +145,11 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 
 
 
-
-
-
-
+	function resetAnimation(bubble) {
+		bubble.classList.remove("bubble");
+		void bubble.offsetWidth;
+		bubble.classList.add("bubble");
+	}
 
 	function getAnimationState() {
 		return document.querySelectorAll('.bubble');
@@ -166,24 +164,24 @@ export default function AppController ($scope, $animateCss, $timeout, $q) {
 			if ( !resizeDelay ) {
 				resizeDelay = $timeout(function() {
 					resizeDelay = null;
-					$timeout.cancel(clearRightMarginElements());
+					$timeout.cancel(clearRightMarginBubbles());
 				}, 2000);
 			}
 		}
 
-		function clearRightMarginElements() {
+		function clearRightMarginBubbles() {
 			$q.when(getAnimationState()).then(function(animations) {
 				for (let i = 0; i < animations.length; i++) {
 					let posX = parseInt(animations[i].style.left,10);
 					if (posX > (window.innerWidth / 70) + 67) {
+						resetAnimation(animations[i]);
 						animations[i].style.left = newParams(animations[i]).posX + '%';
-						animations[i].style.top = 0 + 'px';
-						animations[i].style.animationDuration = (1000 / $scope.speed) - 3 +'s';
+						animations[i].style.animationDuration = (1000 / $scope.speed) + newParams().offset3D + 's';
 					}
 				};
 			})
 		}
-	}());
+	}())
 };
 
 
