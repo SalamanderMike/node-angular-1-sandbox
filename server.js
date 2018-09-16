@@ -35,7 +35,7 @@ app.use('/dist', express.static(path.join(__dirname, '/dist')));
 
 
 // ROUTES
-app.get('/bubble-collector.herokuapp.com', function (req, res) {
+app.get('/*', function (req, res) {
 	res.render('index');
 });
 
