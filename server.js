@@ -32,8 +32,8 @@ ejsIncludePath(__dirname + '/views/includes/index.ejs');
 app.set('view engine', 'ejs');
 // app.use('/public', express.static(path.join(__dirname, '/dist/public')));
 // app.use('/dist', express.static(path.join(__dirname, '/dist')));
-app.use('/public', express.static(__dirname + '/public'));
-app.use('/css', express.static(__dirname + '/public/css'));
+app.use('/public', express.static(path.join(__dirname, '/public')));
+app.use('/css', express.static(path.join(__dirname, '/public/css')));
 
 
 // ROUTES
