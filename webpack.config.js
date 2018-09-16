@@ -13,9 +13,8 @@ module.exports = {
 		]
 	},
 	output: {
-		path: path.resolve('public'),
-		filename: '[name].bundle.js',
-		publicPath: '/public'
+		path: path.resolve(__dirname, 'dist'),
+		filename: '[name].bundle.js'
 	},
 	resolve: {
 		modules: [
@@ -66,7 +65,7 @@ module.exports = {
 				{ 	loader: 'url-loader',
 					options: {
 						limit: 2000,
-						outputPath: '/images/',
+						outputPath: '/public/images/',
 						name: '[name].[ext]'
 					}
 				}]
@@ -75,7 +74,7 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: '/css/style.css'
+			filename: '/public/css/style.css'
 		}),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': '"production"'
