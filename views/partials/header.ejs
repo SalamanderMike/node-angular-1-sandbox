@@ -12,21 +12,18 @@
 		<script src="/dist/vendor.bundle.js"></script>
 		<script src="/dist/app.bundle.js"></script>
 	</head>
-	<body ng-view ng-cloak>
+	<body ng-view>
 		<div id="background"></div>		
 		
 		<section id="score-header">
 			<form action="#">
 				<fieldset>
-					<h1> {{ score }} </h1>
-					<button ng-click="gameStateChange('Start')" ng-if="gameState=='Start'">
-						{{ gameState }}
+					<h1 ng-bind="score"></h1>
+					<button ng-bind="gameState" ng-click="gameStateChange('Start')" ng-if="gameState=='Start'">
 					</button>
-					<button ng-click="gameStateChange('Resume')" ng-if="gameState=='Pause'">
-						{{ gameState }}
+					<button ng-bind="gameState" ng-click="gameStateChange('Resume')" ng-if="gameState=='Pause'">
 					</button>
-					<button ng-click="gameStateChange('Pause')" ng-if="gameState=='Resume'">
-						{{ gameState }}
+					<button ng-bind="gameState" ng-click="gameStateChange('Pause')" ng-if="gameState=='Resume'">
 					</button>
 					<label for="speed">{{ speed }} :Speed
 					<input 	type="range" id="speed" name="speed" ng-model="speed" min="10" max="100" 

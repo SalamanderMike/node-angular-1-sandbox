@@ -2,8 +2,8 @@ export default function router($routeProvider, $locationProvider, $httpProvider)
 	'ngInject';
 	$routeProvider
 		.when('/', {
-			title:          'Dot Game',
-			templateUrl:    '/views/index.ejs',
+			title:          'Bubble Collector',
+			templateUrl:    'index',
 			controller:     'AppController',
 			controllerAs:   'app'
 		})

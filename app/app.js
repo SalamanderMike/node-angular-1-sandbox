@@ -9,9 +9,9 @@ import BubbleFactory from './directives/bubble.factory.js';
 
 
 export default angular.module('app', [ngRoute, ngAnimate])
-	.config(router)
 	.directive('bubbleFactory', () => new BubbleFactory())
 	.controller('AppController', AppController)
+	.config(router)
 	.run(function ($location, $rootScope) {
 		'ngInject';
 		$rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
