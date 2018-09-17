@@ -43,6 +43,7 @@ export default function AppController($scope, $timeout, $q) {
 				let inverse = 100 - ($scope.speed / 10);
 				animations[i].style.animationDuration = (1000 / $scope.speed) + newParams().offset3D +'s';
 				animations[i].style.opacity = 1;
+				animations[i].style.visibility = 'visible';
 
 				if ($scope.gameState === 'Pause') {
 					animations[i].style.webkitAnimationPlayState = 'running';
@@ -56,6 +57,7 @@ export default function AppController($scope, $timeout, $q) {
 			for (let i = 0; i < animations.length; i++) {
 				animations[i].style.webkitAnimationPlayState = 'paused';
 				animations[i].style.opacity = .4;
+				animations[i].style.visibility = 'visible';
 			};
 		})
 	};
