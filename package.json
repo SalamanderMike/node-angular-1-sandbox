@@ -1,6 +1,6 @@
 {
-	"name": "dotgame",
-	"version": "0.8.0",
+	"name": "bubble-collector",
+	"version": "0.9.0",
 	"description": "Web game to gain points by clicking on falling dots",
 	"main": "server.js",
 	"repository": "https://github.com/SalamanderMike/dotgame",
@@ -16,7 +16,9 @@
 		"angular-animate": "^1.7.4",
 		"angular-route": "^1.7.4",
 		"ejs": "^2.6.1",
-		"express": "^4.16.3",
+		"express": "^4.16.3"
+	},
+	"devDependencies": {
 		"babel-core": "^6.26.0",
 		"babel-loader": "^7.1.5",
 		"babel-preset-env": "^1.7.0",
@@ -31,9 +33,6 @@
 		"url-loader": "^0.6.2",
 		"webpack": "^4.19.0",
 		"webpack-cli": "^3.1.0"
-	},
-	"devDependencies": {
-
 	},
 	"engines": {
 		"node": "^10.10.0",

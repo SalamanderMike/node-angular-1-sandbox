@@ -25,9 +25,10 @@
 					</button>
 					<button ng-bind="gameState" ng-click="gameStateChange('Pause')" ng-if="gameState=='Resume'">
 					</button>
-					<label for="speed">{{ speed }} :Speed
+					<label for="speed">
 					<input 	type="range" id="speed" name="speed" ng-model="speed" min="10" max="100" 
 							ng-mouseup="changeSpeed()" ng-mousedown="hideBubbles()">
+							Speed
 					</label>
 				</fieldset>
 			</form>
