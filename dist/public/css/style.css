@@ -14,7 +14,7 @@ html, body {
   color: grey; }
 
 #score-header form {
-  background: -webkit-linear-gradient(45deg, #cedbe9 0%, #aac5de 17%, #3a84c3 36%, #3a84c3 36%, #6199c7 44%, #419ad6 59%, #4bb8f0 71%, #3a8bc2 84%, #26558b 100%);
+  background: -webkit-linear-gradient(right, #c8c7ff 0%, #dfdfdf 45%, #dfdfdf 60%, #ffc342 100%);
   position: fixed;
   width: 100%;
   height: 110px;
@@ -28,15 +28,16 @@ html, body {
     right: 5%;
     top: 5px;
     width: 30%;
-    color: #ffce00;
+    color: #FFC155;
     text-align: right;
     margin: 0;
     padding: 5px 10px;
-    border: 1px solid #6d5800;
+    border: 2px solid #9d9de3;
     border-radius: 5px;
     text-shadow: 0px 0px 8px yellow;
-    -webkit-box-shadow: inset -2px -2px 8px 2px #8d7200; }
+    -webkit-box-shadow: inset -2px -2px 8px 2px #d09837; }
   #score-header form button {
+    background: #d8abcd;
     position: absolute;
     left: 2%;
     top: 5px;
@@ -48,8 +49,8 @@ html, body {
     border-radius: 5px;
     cursor: pointer;
     color: #454545;
-    text-shadow: 0px 0px 4px #00ff82;
-    -webkit-box-shadow: inset -2px -2px 8px 2px grey; }
+    text-shadow: 0px 0px 6px #FFC155;
+    -webkit-box-shadow: inset -2px -2px 8px 2px #57579a; }
   #score-header form label {
     position: absolute;
     top: 73px;
@@ -72,7 +73,7 @@ html, body {
       cursor: pointer;
       animate: 0.2s;
       box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-      background: #3071a9;
+      background: #7373ae;
       border-radius: 1.3px;
       border: 0.2px solid #010101; }
     #score-header form label input[type=range]::-webkit-slider-thumb {
@@ -81,7 +82,7 @@ html, body {
       height: 36px;
       width: 16px;
       border-radius: 7px;
-      background: #ffffff;
+      background: #f9e2ba;
       cursor: pointer;
       -webkit-appearance: none;
       margin-top: -14px; }
