@@ -1,5 +1,5 @@
 #score-header {
-	form {
+	#HUD {
 		background: -webkit-linear-gradient(right, #c8c7ff 0%, #dfdfdf 45%, #dfdfdf 60%, #ffc342 100%);
 		position: fixed;
 		width: 100%;
@@ -53,7 +53,6 @@
 			padding: 0;
 			text-shadow: 0px 0px 8px white; 
 			opacity: 1;
-			// -webkit-transition: opacity 1s ease;
 
 			input[type=range] {
 				-webkit-appearance: none;
@@ -88,10 +87,7 @@
 			input[type=range]:focus::-webkit-slider-runnable-track {
 				background: #367ebd;
 			}
-
-
 		}
-
 	}
 }
 

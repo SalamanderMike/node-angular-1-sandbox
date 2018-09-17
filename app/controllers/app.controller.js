@@ -8,9 +8,12 @@ export default function AppController($scope, $timeout, $q) {
 	// dynamicBubbleNum = Fewer bubbles on smaller screens to prevent clutter
 	var dynamicBubbleNum = 32 - Math.floor((window.innerWidth) / 60);
 
+	// PUBLIC FUNCTIONS 
 	$scope.gameStateChange = function(gameState) {
 		HUDplayMode(gameState);
 		 if (gameState === 'Start') {
+ 			let pop = new Audio('public/audio/pop.wav');
+			pop.play();
 		 	$scope.gameState = "Pause";
 		 	toggleAnimation();
 		 } else {
@@ -41,26 +44,22 @@ export default function AppController($scope, $timeout, $q) {
 	$scope.changeSpeed = function() {
 		$q.when(getAnimationState()).then(function(animations) {
 			for (let i = 0; i < animations.length - dynamicBubbleNum; i++) {
-				let inverse = 100 - ($scope.speed / 10);
+				animations[i].style.webkitAnimation = '';
+				animations[i].style.webkitAnimationPlayState = 'pause';
 				animations[i].style.animationDuration = (1000 / $scope.speed) + newParams().offset3D +'s';
-				animations[i].style.opacity = 1;
-
-				if ($scope.gameState === 'Pause') {
-					animations[i].style.webkitAnimationPlayState = 'running';
-				}
+				animations[i].style.animationDelay = i +'s';
 			};
 		})
 	};
 
 	$scope.hideBubbles = function() {
-		$q.when(getAnimationState()).then(function(animations) {
-			for (let i = 0; i < animations.length; i++) {
-				animations[i].style.webkitAnimationPlayState = 'paused';
-				animations[i].style.opacity = .4;
-			};
-		})
+		resetAnimation();
 	};
 
+
+
+
+	// PRIVATE FUNCTIONS
 	function toggleAnimation(gameState) {
 		switch (gameState) {
 			case 'Pause':
@@ -74,8 +73,8 @@ export default function AppController($scope, $timeout, $q) {
 			case 'Resume':
 				$q.when(getAnimationState()).then(function(animations) {
 					for (let i = 0; i < animations.length; i++) {
-						animations[i].style.pointerEvents = 'none';
 						animations[i].style.webkitAnimationPlayState = 'paused';
+						animations[i].style.pointerEvents = 'none';
 					};
 				})
 				break;
@@ -133,10 +132,19 @@ export default function AppController($scope, $timeout, $q) {
 		}
 	};
 
+
 	function resetAnimation(bubble) {
-		bubble.classList.remove("bubble");
-		void bubble.offsetWidth;
-		bubble.classList.add("bubble");
+		if (bubble) {
+			bubble.classList.remove("bubble");
+			void bubble.offsetWidth;
+			bubble.classList.add("bubble");
+		} else {
+			$q.when(getAnimationState()).then(function(animations) {
+				for (let i = 0; i < animations.length; i++) {
+					animations[i].style.webkitAnimation = 'none';
+				};
+			});
+		}
 	};
 
 	function getAnimationState() {
