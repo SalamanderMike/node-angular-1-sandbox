@@ -16,17 +16,20 @@
 		<div id="background"></div>		
 		
 		<section id="score-header">
-			<form action="#">
+			<form id="HUD" action="#">
 				<fieldset>
 					<h1 ng-bind="score"></h1>
-					<button ng-bind="gameState" ng-click="gameStateChange('Start')" ng-if="gameState=='Start'">
+					<button ng-bind="gameState" 
+							ng-click="gameStateChange('Start')" ng-if="gameState=='Start'">
 					</button>
-					<button ng-bind="gameState" ng-click="gameStateChange('Resume')" ng-if="gameState=='Pause'">
+					<button id="pause" ng-bind="gameState" 
+							ng-click="gameStateChange('Resume')" ng-show="gameState=='Pause'">
 					</button>
-					<button ng-bind="gameState" ng-click="gameStateChange('Pause')" ng-if="gameState=='Resume'">
+					<button id="resume" ng-bind="gameState" 
+							ng-click="gameStateChange('Pause')" ng-show="gameState=='Resume'">
 					</button>
-					<label for="speed">
-					<input 	type="range" id="speed" name="speed" ng-model="speed" min="10" max="100" 
+					<label  id="speed" for="speed">
+					<input 	type="range" name="speed" ng-model="speed" min="10" max="100" 
 							ng-mouseup="changeSpeed()" ng-mousedown="hideBubbles()">
 							Speed
 					</label>

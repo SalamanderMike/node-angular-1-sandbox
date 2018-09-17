@@ -9,6 +9,7 @@ export default function AppController($scope, $timeout, $q) {
 	var dynamicBubbleNum = 32 - Math.floor((window.innerWidth) / 60);
 
 	$scope.gameStateChange = function(gameState) {
+		HUDplayMode(gameState);
 		 if (gameState === 'Start') {
 		 	$scope.gameState = "Pause";
 		 	toggleAnimation();
@@ -43,7 +44,6 @@ export default function AppController($scope, $timeout, $q) {
 				let inverse = 100 - ($scope.speed / 10);
 				animations[i].style.animationDuration = (1000 / $scope.speed) + newParams().offset3D +'s';
 				animations[i].style.opacity = 1;
-				animations[i].style.visibility = 'visible';
 
 				if ($scope.gameState === 'Pause') {
 					animations[i].style.webkitAnimationPlayState = 'running';
@@ -57,7 +57,6 @@ export default function AppController($scope, $timeout, $q) {
 			for (let i = 0; i < animations.length; i++) {
 				animations[i].style.webkitAnimationPlayState = 'paused';
 				animations[i].style.opacity = .4;
-				animations[i].style.visibility = 'visible';
 			};
 		})
 	};
@@ -117,41 +116,28 @@ export default function AppController($scope, $timeout, $q) {
 		}
 	};
 
+	function HUDplayMode(gameState) {
+		var header = document.getElementById('HUD');
+		var range = document.getElementById('speed');
 
-
-
-
-
-
-
-
-
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		if (gameState === 'Resume') {
+			let playButton = document.getElementById('resume');
+			playButton.style.height = '83px';
+			header.style.height = '110px';
+			range.style.opacity = 1;
+		} else {
+			let playButton = document.getElementById('pause');
+			playButton.style.height = '53px';
+			header.style.height = '70px';
+			range.style.opacity = 0;
+		}
+	};
 
 	function resetAnimation(bubble) {
 		bubble.classList.remove("bubble");
 		void bubble.offsetWidth;
 		bubble.classList.add("bubble");
-	}
+	};
 
 	function getAnimationState() {
 		return document.querySelectorAll('.bubble');
@@ -169,7 +155,7 @@ export default function AppController($scope, $timeout, $q) {
 					$timeout.cancel(clearRightMarginBubbles());
 				}, 2000);
 			}
-		}
+		};
 
 		function clearRightMarginBubbles() {
 			$q.when(getAnimationState()).then(function(animations) {
@@ -185,25 +171,3 @@ export default function AppController($scope, $timeout, $q) {
 		}
 	}())
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
