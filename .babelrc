@@ -1,4 +1,9 @@
 {
-	"presets": ["env"],
+ "presets": [
+      "@babel/preset-env"
+  ],
+    "plugins": [
+        "angularjs-annotate"
+    ],
 	"compact": true
 }
