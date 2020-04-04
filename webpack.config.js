@@ -8,6 +8,7 @@ module.exports = {
 		app: './app/app.js',
 		vendor: [
 			'angular',
+			'angular-animate',
 			'angular-route'
 		]
 	},
