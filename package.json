@@ -1,6 +1,6 @@
 {
 	"name": "bubble-collector",
-	"version": "0.9.0",
+	"version": "1.0.0",
 	"description": "Web game to gain points by clicking on falling dots",
 	"main": "server.js",
 	"repository": "https://github.com/SalamanderMike/dotgame",
@@ -13,7 +13,6 @@
 	},
 	"dependencies": {
 		"angular": "^1.7.9",
-		"angular-animate": "^1.7.9",
 		"angular-route": "^1.7.9",
 		"ejs": "^2.7.4",
 		"express": "^4.17.1",
