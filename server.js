@@ -26,7 +26,7 @@ function ejsIncludePath(indexPath, information) {
 		});
 	})
 };
-ejsIncludePath(__dirname + '/views/includes/index.ejs');
+ejsIncludePath(__dirname + '/views/includes/index-hub.ejs');
 
 // Setup
 app.set('view engine', 'ejs');
