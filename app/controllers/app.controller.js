@@ -122,12 +122,12 @@ export default function AppController($scope, $timeout, $q) {
 		if (gameState === 'Resume') {
 			let playButton = document.getElementById('resume');
 			playButton.style.height = '83px';
-			header.style.height = '110px';
+			header.style.height = '130px';
 			range.style.opacity = 1;
 		} else {
 			let playButton = document.getElementById('pause');
 			playButton.style.height = '53px';
-			header.style.height = '70px';
+			header.style.height = '75px';
 			range.style.opacity = 0;
 		}
 	};
