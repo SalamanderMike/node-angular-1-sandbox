@@ -1,9 +1,9 @@
 {
-	"name": "bubble-collector",
-	"version": "1.5.0",
-	"description": "Web game to gain points by clicking on falling bubbles",
+	"name": "node-angular-1-sandbox",
+	"version": "1.0.0",
+	"description": "Node/Angular 1.7.9 Sandbox",
 	"main": "server.js",
-	"repository": "https://github.com/SalamanderMike/dotgame",
+	"repository": "https://github.com/SalamanderMike/node-angular-1-sandbox",
 	"author": "Michael McClure",
 	"license": "MIT",
 	"scripts": {
@@ -18,11 +18,18 @@
 		"express": "^4.17.1"
 	},
 	"devDependencies": {
+		"eslint": "^6.8.0",
+		"eslint-config-standard": "^14.1.1",
+		"eslint-plugin-import": "^2.20.2",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-promise": "^4.2.1",
+		"eslint-plugin-standard": "^4.0.1",
 		"@babel/cli": "^7.8.4",
 		"@babel/core": "^7.9.0",
 		"@babel/preset-env": "^7.9.0",
 		"babel-loader": "^8.1.0",
 		"babel-plugin-angularjs-annotate": "^0.10.0",
+		"compression": "^1.7.4",
 		"css-loader": "^3.5.0",
 		"file-loader": "^6.0.0",
 		"mini-css-extract-plugin": "^0.9.0",

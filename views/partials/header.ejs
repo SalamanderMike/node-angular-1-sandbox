@@ -4,36 +4,17 @@
 		<title ng-bind="title"></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+		<script defer src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+		<script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous">
 
-		<link 	href="/public/css/style.css" rel="stylesheet" type="text/css"/>
-		<script src="/dist/vendor.bundle.js"></script>
-		<script src="/dist/app.bundle.js"></script>
+		<link 	href="/public/css/1.style.css" rel="stylesheet" type="text/css"/>
+
+		<script defer src="/dist/app.bundle.js"></script>
 	</head>
 	<body ng-view>
 		<div id="background"></div>
-		
-		<section id="score-header">
-			<form id="HUD" action="#">
-				<fieldset>
-					<h1 ng-bind="score"></h1>
-					<button ng-bind="gameState" type="button"
-							ng-click="gameStateChange('Start')" ng-if="gameState=='Start'">
-					</button>
-					<button id="pause" ng-bind="gameState" type="button"
-							ng-click="gameStateChange('Resume')" ng-show="gameState=='Pause'">
-					</button>
-					<button id="resume" ng-bind="gameState" type="button"
-							ng-click="gameStateChange('Pause')" ng-show="gameState=='Resume'">
-					</button>
-					<label  id="speed" for="speed">
-					<input 	type="range" name="speed" ng-model="speed" min="10" max="100"
-							ng-mouseup="changeSpeed()" ng-mousedown="hideBubbles()">
-							Speed
-					</label>
-				</fieldset>
-			</form>
-		</section>

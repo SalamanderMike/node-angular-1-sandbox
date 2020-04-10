@@ -1,0 +1,15 @@
+figure {
+	position: relative;
+
+	#image {
+		background: url(./img/bubble.png);
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 50%;
+		color: transparent;
+		cursor: pointer;
+		object-fit: contain;
+		height: 100px;
+		width: 100px;
+	}
+}

@@ -1,4 +1,5 @@
 const express = require('express')
+const compression = require('compression')
 const bodyParser = require('body-parser')
 const path = require('path')
 const ejs = require('ejs')
@@ -8,6 +9,7 @@ const app = express()
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(compression())
 
 // Functions
 function ejsIncludePath (indexPath, information) {

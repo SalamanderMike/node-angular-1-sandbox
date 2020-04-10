@@ -42,7 +42,8 @@ module.exports = {
 					{
 						loader: 'babel-loader',
 						options: { presets: ['@babel/preset-env'] }
-					}]
+					}],
+				exclude: /node_modules/
 			},
 			{
 				test: /\.scss$/,
@@ -79,7 +80,7 @@ module.exports = {
 			filename: '/public/css/style.css'
 		}),
 		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': '"production"'
+			'process.env.NODE_ENV': '"development"'
 		})
 	]
 }

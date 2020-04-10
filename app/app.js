@@ -5,10 +5,10 @@ import ngRoute from 'angular-route'
 import ngAnimate from 'angular-animate'
 import router from './routing'
 import AppController from './controllers/app.controller.js'
-import BubbleFactory from './directives/bubble.factory.js'
+import AppFactory from './directives/app.factory.js'
 
 export default angular.module('app', [ngRoute, ngAnimate])
-	.directive('bubbleFactory', () => new BubbleFactory())
+	.directive('appFactory', () => new AppFactory())
 	.controller('AppController', AppController)
 	.config(router)
 	.run(function ($location, $rootScope) {

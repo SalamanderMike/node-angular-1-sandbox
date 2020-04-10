@@ -2,7 +2,7 @@ export default function router ($routeProvider, $locationProvider, $httpProvider
 	'ngInject'
 	$routeProvider
 		.when('/', {
-			title: 'Bubble Collector',
+			title: 'Sandbox',
 			templateUrl: 'index',
 			controller: 'AppController',
 			controllerAs: 'app'
