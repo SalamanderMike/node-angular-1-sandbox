@@ -1,15 +1,14 @@
 {
 	"name": "bubble-collector",
-	"version": "1.0.0",
-	"description": "Web game to gain points by clicking on falling dots",
+	"version": "1.5.0",
+	"description": "Web game to gain points by clicking on falling bubbles",
 	"main": "server.js",
 	"repository": "https://github.com/SalamanderMike/dotgame",
 	"author": "Michael McClure",
 	"license": "MIT",
 	"scripts": {
 		"start": "node server.js",
-		"dev": "webpack --mode development",
-		"build": "webpack --mode production"
+		"build": "webpack"
 	},
 	"dependencies": {
 		"angular": "^1.7.9",

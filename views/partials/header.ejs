@@ -14,7 +14,7 @@
 		<script src="/dist/app.bundle.js"></script>
 	</head>
 	<body ng-view>
-		<div id="background"></div>		
+		<div id="background"></div>
 		
 		<section id="score-header">
 			<form id="HUD" action="#">
@@ -30,7 +30,7 @@
 							ng-click="gameStateChange('Pause')" ng-show="gameState=='Resume'">
 					</button>
 					<label  id="speed" for="speed">
-					<input 	type="range" name="speed" ng-model="speed" min="10" max="100" 
+					<input 	type="range" name="speed" ng-model="speed" min="10" max="100"
 							ng-mouseup="changeSpeed()" ng-mousedown="hideBubbles()">
 							Speed
 					</label>

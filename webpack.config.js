@@ -1,6 +1,6 @@
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path = require('path');
+const path = require('path')
+const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
 	mode: 'production',
@@ -20,8 +20,8 @@ module.exports = {
 		modules: [
 			'node_modules',
 			path.resolve(__dirname, 'node_modules')
-			], 
-		extensions: ['.js'] 
+		],
+		extensions: ['.js']
 	},
 	optimization: {
 		splitChunks: {
@@ -39,22 +39,23 @@ module.exports = {
 			{
 				test: /\.js/,
 				use: [
-				{ loader: 'babel-loader',
-					options: { presets: ['@babel/preset-env'] }
-				}]
+					{
+						loader: 'babel-loader',
+						options: { presets: ['@babel/preset-env'] }
+					}]
 			},
 			{
 				test: /\.scss$/,
-				use: 
+				use:
 					[
-						'style-loader', 
+						'style-loader',
 						MiniCssExtractPlugin.loader,
-						'css-loader', 
+						'css-loader',
 						'sass-loader'
-				]
+					]
 			},
 			{
-				test: /\.css$/, 
+				test: /\.css$/,
 				use: [
 					'css-loader'
 				]
@@ -62,13 +63,14 @@ module.exports = {
 			{
 				test: /\.(jpg|jpeg|gif|png)$/,
 				use: [
-				{ 	loader: 'url-loader',
-					options: {
-						limit: 2000,
-						outputPath: '/public/images/',
-						name: '[name].[ext]'
-					}
-				}]
+					{
+						loader: 'url-loader',
+						options: {
+							limit: 2000,
+							outputPath: '/public/images/',
+							name: '[name].[ext]'
+						}
+					}]
 			}
 		]
 	},
@@ -80,4 +82,4 @@ module.exports = {
 			'process.env.NODE_ENV': '"production"'
 		})
 	]
-};
+}

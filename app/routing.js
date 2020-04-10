@@ -1,19 +1,19 @@
-export default function router($routeProvider, $locationProvider, $httpProvider) {
-	'ngInject';
+export default function router ($routeProvider, $locationProvider, $httpProvider) {
+	'ngInject'
 	$routeProvider
 		.when('/', {
-			title:          'Bubble Collector',
-			templateUrl:    'index',
-			controller:     'AppController',
-			controllerAs:   'app'
+			title: 'Bubble Collector',
+			templateUrl: 'index',
+			controller: 'AppController',
+			controllerAs: 'app'
 		})
 		.otherwise({
-			redirectTo: "/"
-		});
+			redirectTo: '/'
+		})
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false
-	});
+	})
 	$httpProvider.defaults.headers
-		.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
-};
+		.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+}

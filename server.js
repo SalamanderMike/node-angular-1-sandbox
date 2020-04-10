@@ -1,50 +1,46 @@
-var express = require('express'),
-	bodyParser = require('body-parser'),
-	path = require('path'),
-	ejs = require('ejs'),
-	fs = require('fs'),
-	app = express();
-
+const express = require('express')
+const bodyParser = require('body-parser')
+const path = require('path')
+const ejs = require('ejs')
+const fs = require('fs')
+const app = express()
 
 // Middleware
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 // Functions
-function ejsIncludePath(indexPath, information) {
+function ejsIncludePath (indexPath, information) {
 	ejs.renderFile(indexPath, function (err, html) {
 		if (err) {
-			console.log("ERROR: " + err);
-			return false;
+			console.log('ERROR: ' + err)
+			return false
 		}
-		fs.writeFile(__dirname + '/views/index.ejs', html, function (err) {
+		fs.writeFile(path.join(__dirname, '/views/index.ejs'), html, function (err) {
 			if (err) {
-				console.log(err);
+				console.log(err)
 				return false
 			}
-			return true;
-		});
+			return true
+		})
 	})
 };
-ejsIncludePath(__dirname + '/views/includes/index-hub.ejs');
+ejsIncludePath(path.join(__dirname, '/views/includes/index-hub.ejs'))
 
 // Setup
-app.set('view engine', 'ejs');
-app.use('/public', express.static(path.join(__dirname, '/dist/public')));
-app.use('/dist', express.static(path.join(__dirname, '/dist')));
+app.set('view engine', 'ejs')
+app.use('/dist', express.static(path.join(__dirname, '/dist')))
+app.use('/public', express.static(path.join(__dirname, '/dist/public')))
 
 // ROUTES
 app.get('/*', function (req, res) {
-	res.render('index');
-});
-
-
+	res.render('index')
+})
 
 // NODEMON **************************************
-app.listen(process.env.PORT || 3000, function(){
-	console.log("THE AUDIENCE IS LISTENING... localhost:3000: " + process.env.NODE_ENV);
-});
-
+app.listen(process.env.PORT || 3000, function () {
+	console.log('THE AUDIENCE IS LISTENING... localhost:3000: ' + process.env.NODE_ENV)
+})
 
 // EXPORT ***************************************
-module.exports = app;
+module.exports = app
